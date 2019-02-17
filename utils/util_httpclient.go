@@ -19,13 +19,11 @@ const (
 	PostMethod   = "POST"
 	SendtypeFrom = "from"
 	SendtypeJson = "json"
-	ProxyUrl = "localhost:1086"
+	//ProxyUrl = "localhost:1086"
+	ProxyUrl = "host.docker.internal:1086"
 )
 
-
-
 //默认为SendtypeFrom
-
 type HttpSend struct {
 	Link     string
 	SendType string
@@ -34,7 +32,7 @@ type HttpSend struct {
 	sync.RWMutex
 }
 
-func NewHttpSend(link string,typ string) *HttpSend {
+func NewHttpSend(link string, typ string) *HttpSend {
 	return &HttpSend{
 		Link:     link,
 		SendType: typ,
@@ -116,7 +114,7 @@ func (h *HttpSend) send(method string, needProxy bool) ([]byte, error) {
 				Timeout: 10 * time.Second,
 			}).Dial,
 		}
-	}else {
+	} else {
 		client.Transport = &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 			Dial: (&net.Dialer{
