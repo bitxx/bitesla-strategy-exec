@@ -13,4 +13,6 @@ type Service struct {
 	CurrentUserId int64
 	Token         string
 	ExchangeId    int64
+	TraderId      int64
+	StrategyId    int64
 }

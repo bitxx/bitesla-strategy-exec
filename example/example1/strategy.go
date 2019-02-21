@@ -13,7 +13,7 @@ func Init() {
 
 func Run() {
 	//test() //基本数据读取
-	//test1() //获取klines
+	test1() //获取klines
 	//test2() //获取trades
 	//test3() //获取Depth
 	//test4() //获取ticker
@@ -23,7 +23,7 @@ func Run() {
 	//test8() //获取oneOrder
 	//test9() //获取UnfinishOrders
 	//test10() //获取历史订单
-	test11() //获取交易所详情
+	//test11() //获取交易所详情
 
 }
 

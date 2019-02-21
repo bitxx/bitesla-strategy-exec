@@ -12,16 +12,15 @@ func Init() {
 }
 
 func Run() {
-
-	result, err := Srv.ExchangeGetKlineRecords(&model.ReqExchangeKline{ExchangeId: Srv.ExchangeId, Size: 1, Period: 4, CurrencyPair: "BTC_USDT"})
+	result, err := Srv.ExchangeGetKlineRecords(&model.ReqExchangeKline{ExchangeId: Srv.ExchangeId, Size: 1, Period: 4, CurrencyPair: "ETH_USDT"})
 	if err != nil || len(result.Data) != 1 {
 		fmt.Println("获取k线信息错误:", err)
 		return
 	}
 	macdIndicator := NewMacd(12, 26, 9)
-	macdIndicator.Update(0)
 	f := result.Data[0].Close
 	diff, dea, macd := macdIndicator.Update(f)
+	fmt.Println("------------close:", f)
 	fmt.Println("------------diff:", diff)
 	fmt.Println("------------dea:", dea)
 	fmt.Println("------------macd:", macd)
