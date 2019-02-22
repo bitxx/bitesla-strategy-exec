@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	traderDetailUrl = "/trader/detail"
-	traderStatusUrl = "/trader/status"
+	traderDetailUrl       = rootUrl + "/trader/detail"
+	traderStatusUpdateUrl = rootUrl + "/trader/updatestatus"
 )
 
 //GetTraderDetail
@@ -32,21 +32,15 @@ func (s *Service) TraderGetDetail(reqTraderDetail *model.ReqTraderDetail) (resul
 }
 
 //TraderUpdateStatus
-func (s *Service) TraderUpdateStatus(reqTraderDetail *model.ReqTraderDetail) (result *model.RespTraderDetail, err error) {
-	h := utils.NewHttpSend(traderStatusUrl, utils.SendtypeJson)
+/*func (s *Service) TraderUpdateStatus(reqTraderDetail *model.ReqTraderStatus) error {
+	h := utils.NewHttpSend(traderStatusUpdateUrl, utils.SendtypeJson)
 
 	h.SetBody(reqTraderDetail)
 	t := map[string]string{}
 	t[token] = s.Token
 	h.SetHeader(t)
 
-	data, err := h.Post(false)
-	if err != nil {
-		return nil, err
-	}
-	err = json.Unmarshal(data, &result)
-	if err != nil {
-		return nil, err
-	}
-	return result, err
+	_, err := h.Post(false)
+	return err
 }
+*/

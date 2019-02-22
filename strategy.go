@@ -6,25 +6,51 @@ import (
 )
 
 //MACD实现
+var (
+	macdIndicator *Macd
+	isFirst       = true
+)
 
 func Init() {
 	fmt.Println("参数初始化")
+	macdIndicator = NewMacd(12, 26, 9)
 }
 
 func Run() {
-	result, err := Srv.ExchangeGetKlineRecords(&model.ReqExchangeKline{ExchangeId: Srv.ExchangeId, Size: 1, Period: 4, CurrencyPair: "ETH_USDT"})
+	delay := int64(10)
+	result, err := Srv.ExchangeGetKlineRecords(&model.ReqExchangeKline{ExchangeId: Srv.ExchangeId, Size: 1, Period: 0, CurrencyPair: "ETH_USDT"})
 	if err != nil || len(result.Data) != 1 {
 		fmt.Println("获取k线信息错误:", err)
 		return
 	}
-	macdIndicator := NewMacd(12, 26, 9)
 	f := result.Data[0].Close
 	diff, dea, macd := macdIndicator.Update(f)
-	fmt.Println("------------close:", f)
-	fmt.Println("------------diff:", diff)
-	fmt.Println("------------dea:", dea)
-	fmt.Println("------------macd:", macd)
 
+	//此处逻辑需要自行调整
+	if diff-macd > 0 && dea-macd > 0 {
+		//运行10次后，再考虑买入
+		if Srv.RunTimes > delay {
+			fmt.Println("buy")
+			fmt.Println("------------diff-macd:", diff-macd)
+			fmt.Println("------------dea-macd:", dea-macd)
+			fmt.Println("------------close:", f)
+			fmt.Println("------------diff:", diff)
+			fmt.Println("------------dea:", dea)
+			fmt.Println("------------macd:", macd)
+		}
+
+	}
+	if diff-macd < 0 && dea-macd < 0 {
+		if Srv.RunTimes > delay {
+			fmt.Println("sell")
+			fmt.Println("------------diff-macd:", diff-macd)
+			fmt.Println("------------dea-macd:", dea-macd)
+			fmt.Println("------------close:", f)
+			fmt.Println("------------diff:", diff)
+			fmt.Println("------------dea:", dea)
+			fmt.Println("------------macd:", macd)
+		}
+	}
 }
 
 type Macd struct {

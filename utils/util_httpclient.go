@@ -19,8 +19,8 @@ const (
 	PostMethod   = "POST"
 	SendtypeFrom = "from"
 	SendtypeJson = "json"
-	//ProxyUrl = "localhost:1086"
-	ProxyUrl = "host.docker.internal:1086"
+	ProxyUrl     = "localhost:1086"
+	//ProxyUrl = "host.docker.internal:1086"
 )
 
 //默认为SendtypeFrom
