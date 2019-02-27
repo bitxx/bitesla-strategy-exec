@@ -2,13 +2,13 @@ package service
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/jason-wj/bitesla-strategy-exec/model"
 	"github.com/jason-wj/bitesla-strategy-exec/utils"
 )
 
 var (
-	traderDetailUrl       = rootUrl + "/trader/detail"
-	traderStatusUpdateUrl = rootUrl + "/trader/updatestatus"
+	traderDetailUrl = rootUrl + "/trader/detail"
 )
 
 //GetTraderDetail
@@ -22,6 +22,7 @@ func (s *Service) TraderGetDetail(reqTraderDetail *model.ReqTraderDetail) (resul
 
 	data, err := h.Post(false)
 	if err != nil {
+		fmt.Println("----------")
 		return nil, err
 	}
 	err = json.Unmarshal(data, &result)
