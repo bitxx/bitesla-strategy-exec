@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/jason-wj/bitesla-strategy-exec/model"
+	"github.com/bitxx/bitesla-strategy-exec/model"
 )
 
 //这是一个策略的测试

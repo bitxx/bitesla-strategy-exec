@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/jason-wj/bitesla-strategy-exec/model"
+	"github.com/bitxx/bitesla-strategy-exec/model"
 )
 
-//MACD实现
+// MACD实现
 var (
 	macdIndicator *Macd
 	preDiff       = 0.0

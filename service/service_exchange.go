@@ -2,8 +2,8 @@ package service
 
 import (
 	"encoding/json"
-	"github.com/jason-wj/bitesla-strategy-exec/model"
-	"github.com/jason-wj/bitesla-strategy-exec/utils"
+	"github.com/bitxx/bitesla-strategy-exec/model"
+	"github.com/bitxx/bitesla-strategy-exec/utils"
 )
 
 var (
@@ -22,7 +22,7 @@ var (
 	//exchangeListUrl              = rootUrl + "/exchange/list"
 )
 
-//GetExchangeDetail
+// GetExchangeDetail
 func (s *Service) ExchangeGetExchangeDetail(reqExchangeDetail *model.ReqExchangeDetail) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeGetExchangeDetailUrl, utils.SendtypeJson)
 
@@ -42,7 +42,7 @@ func (s *Service) ExchangeGetExchangeDetail(reqExchangeDetail *model.ReqExchange
 	return result, err
 }
 
-//GetOrderHistorys
+// GetOrderHistorys
 func (s *Service) ExchangeGetOrderHistorys(reqOrderHistory *model.ReqExchangeOrderHistory) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeGetOrderHistorysUrl, utils.SendtypeJson)
 
@@ -62,8 +62,7 @@ func (s *Service) ExchangeGetOrderHistorys(reqOrderHistory *model.ReqExchangeOrd
 	return result, err
 }
 
-
-//GetUnfinishOrders
+// GetUnfinishOrders
 func (s *Service) ExchangeGetUnfinishOrders(reqUnfinishOrders *model.ReqExchangeUnfinishOrders) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeGetUnfinishOrdersUrl, utils.SendtypeJson)
 
@@ -83,7 +82,7 @@ func (s *Service) ExchangeGetUnfinishOrders(reqUnfinishOrders *model.ReqExchange
 	return result, err
 }
 
-//CancelOrder
+// CancelOrder
 func (s *Service) ExchangeCancelOrder(reqCancelOrder *model.ReqExchangeCancelOrder) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeCancelOrderUrl, utils.SendtypeJson)
 
@@ -103,7 +102,7 @@ func (s *Service) ExchangeCancelOrder(reqCancelOrder *model.ReqExchangeCancelOrd
 	return result, err
 }
 
-//GetOneOrder
+// GetOneOrder
 func (s *Service) ExchangeGetOneOrder(reqOneOrder *model.ReqExchangeOneOrder) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeGetOneOrderUrl, utils.SendtypeJson)
 
@@ -123,7 +122,7 @@ func (s *Service) ExchangeGetOneOrder(reqOneOrder *model.ReqExchangeOneOrder) (r
 	return result, err
 }
 
-//OrderPlace
+// OrderPlace
 func (s *Service) ExchangeOrderPlace(reqOrderPlace *model.ReqExchangeOrderPlace) (result interface{}, err error) {
 	h := utils.NewHttpSend(exchangeOrderPlaceUrl, utils.SendtypeJson)
 
@@ -143,7 +142,7 @@ func (s *Service) ExchangeOrderPlace(reqOrderPlace *model.ReqExchangeOrderPlace)
 	return result, err
 }
 
-//获取kline
+// 获取kline
 func (s *Service) ExchangeGetKlineRecords(reqKline *model.ReqExchangeKline) (result *model.RespExchangeKlines, err error) {
 	h := utils.NewHttpSend(exchangeGetKlineRecordsUrl, utils.SendtypeJson)
 
@@ -163,7 +162,7 @@ func (s *Service) ExchangeGetKlineRecords(reqKline *model.ReqExchangeKline) (res
 	return result, err
 }
 
-//获取Trades
+// 获取Trades
 func (s *Service) ExchangeGetTrades(reqTrades *model.ReqExchangeTrades) (result *model.RespExchangeKlines, err error) {
 	h := utils.NewHttpSend(exchangeGetTradesUrl, utils.SendtypeJson)
 
@@ -183,7 +182,7 @@ func (s *Service) ExchangeGetTrades(reqTrades *model.ReqExchangeTrades) (result 
 	return result, err
 }
 
-//获取Depths
+// 获取Depths
 func (s *Service) ExchangeGetDepth(reqDepth *model.ReqExchangeDepth) (result *model.RespExchangeDepth, err error) {
 	h := utils.NewHttpSend(exchangeGetDepthUrl, utils.SendtypeJson)
 
@@ -203,7 +202,7 @@ func (s *Service) ExchangeGetDepth(reqDepth *model.ReqExchangeDepth) (result *mo
 	return result, err
 }
 
-//获取Ticker
+// 获取Ticker
 func (s *Service) ExchangeGetTicker(reqTicker *model.ReqExchangeTicker) (result *model.RespExchangeTicker, err error) {
 	h := utils.NewHttpSend(exchangeGetTickerUrl, utils.SendtypeJson)
 
@@ -223,7 +222,7 @@ func (s *Service) ExchangeGetTicker(reqTicker *model.ReqExchangeTicker) (result 
 	return result, err
 }
 
-//获取Account
+// 获取Account
 func (s *Service) ExchangeGetAccount(reqAccount *model.ReqExchangeAccount) (result *model.RespExchangeAccounts, err error) {
 	h := utils.NewHttpSend(exchangeGetAccountUrl, utils.SendtypeJson)
 
@@ -242,4 +241,3 @@ func (s *Service) ExchangeGetAccount(reqAccount *model.ReqExchangeAccount) (resu
 	}
 	return result, err
 }
-

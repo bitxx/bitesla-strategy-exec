@@ -3,9 +3,9 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/bitxx/bitesla-strategy-exec/model"
+	"github.com/bitxx/bitesla-strategy-exec/service"
 	"github.com/henrylee2cn/goutil/calendar/cron"
-	"github.com/jason-wj/bitesla-strategy-exec/model"
-	"github.com/jason-wj/bitesla-strategy-exec/service"
 	"os"
 	"os/signal"
 	"strconv"
@@ -17,7 +17,7 @@ import (
 
 var Srv *service.Service
 
-//指定时间更新一次,10分钟
+// 指定时间更新一次,10分钟
 const Timer string = "@every 10s"
 
 const (
@@ -77,7 +77,7 @@ func main() {
 	<-s
 }
 
-//执行策略
+// 执行策略
 func task() {
 	result, err := Srv.TraderGetDetail(&model.ReqTraderDetail{TraderId: Srv.TraderId})
 	if err != nil {
@@ -92,7 +92,7 @@ func task() {
 	}
 }
 
-//停止策略
+// 停止策略
 func stop() {
 	c.Stop()
 	os.Exit(1)

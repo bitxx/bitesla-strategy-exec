@@ -3,15 +3,15 @@ package service
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/jason-wj/bitesla-strategy-exec/model"
-	"github.com/jason-wj/bitesla-strategy-exec/utils"
+	"github.com/bitxx/bitesla-strategy-exec/model"
+	"github.com/bitxx/bitesla-strategy-exec/utils"
 )
 
 var (
 	traderDetailUrl = rootUrl + "/trader/detail"
 )
 
-//GetTraderDetail
+// GetTraderDetail
 func (s *Service) TraderGetDetail(reqTraderDetail *model.ReqTraderDetail) (result *model.RespTraderDetail, err error) {
 	h := utils.NewHttpSend(traderDetailUrl, utils.SendtypeJson)
 
